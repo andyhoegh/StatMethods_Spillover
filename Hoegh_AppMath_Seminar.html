@@ -1,0 +1,929 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="Andy Hoegh" />
+  <title>Hoegh_AppMath_Seminar.knit</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="Hoegh_AppMath_Seminar_files/reveal.js-3.3.0.1/css/reveal.css"/>
+
+
+
+<link rel="stylesheet" href="Hoegh_AppMath_Seminar_files/reveal.js-3.3.0.1/css/theme/simple.css" id="theme">
+
+
+  <!-- some tweaks to reveal css -->
+  <style type="text/css">
+    .reveal h1 { font-size: 2.0em; }
+    .reveal h2 { font-size: 1.5em;  }
+    .reveal h3 { font-size: 1.25em;	}
+    .reveal h4 { font-size: 1em;	}
+
+    .reveal .slides>section,
+    .reveal .slides>section>section {
+      padding: 0px 0px;
+    }
+
+
+
+    .reveal table {
+      border-width: 1px;
+      border-spacing: 2px;
+      border-style: dotted;
+      border-color: gray;
+      border-collapse: collapse;
+      font-size: 0.7em;
+    }
+
+    .reveal table th {
+      border-width: 1px;
+      padding-left: 10px;
+      padding-right: 25px;
+      font-weight: bold;
+      border-style: dotted;
+      border-color: gray;
+    }
+
+    .reveal table td {
+      border-width: 1px;
+      padding-left: 10px;
+      padding-right: 25px;
+      border-style: dotted;
+      border-color: gray;
+    }
+
+
+  </style>
+
+    <style type="text/css">code{white-space: pre;}</style>
+
+
+<!-- Printing and PDF exports -->
+<script id="paper-css" type="application/dynamic-css">
+
+/* Default Print Stylesheet Template
+   by Rob Glazebrook of CSSnewbie.com
+   Last Updated: June 4, 2008
+
+   Feel free (nay, compelled) to edit, append, and
+   manipulate this file as you see fit. */
+
+
+@media print {
+
+	/* SECTION 1: Set default width, margin, float, and
+	   background. This prevents elements from extending
+	   beyond the edge of the printed page, and prevents
+	   unnecessary background images from printing */
+	html {
+		background: #fff;
+		width: auto;
+		height: auto;
+		overflow: visible;
+	}
+	body {
+		background: #fff;
+		font-size: 20pt;
+		width: auto;
+		height: auto;
+		border: 0;
+		margin: 0 5%;
+		padding: 0;
+		overflow: visible;
+		float: none !important;
+	}
+
+	/* SECTION 2: Remove any elements not needed in print.
+	   This would include navigation, ads, sidebars, etc. */
+	.nestedarrow,
+	.controls,
+	.fork-reveal,
+	.share-reveal,
+	.state-background,
+	.reveal .progress,
+	.reveal .backgrounds {
+		display: none !important;
+	}
+
+	/* SECTION 3: Set body font face, size, and color.
+	   Consider using a serif font for readability. */
+	body, p, td, li, div {
+		font-size: 20pt!important;
+		font-family: Georgia, "Times New Roman", Times, serif !important;
+		color: #000;
+	}
+
+	/* SECTION 4: Set heading font face, sizes, and color.
+	   Differentiate your headings from your body text.
+	   Perhaps use a large sans-serif for distinction. */
+	h1,h2,h3,h4,h5,h6 {
+		color: #000!important;
+		height: auto;
+		line-height: normal;
+		font-family: Georgia, "Times New Roman", Times, serif !important;
+		text-shadow: 0 0 0 #000 !important;
+		text-align: left;
+		letter-spacing: normal;
+	}
+	/* Need to reduce the size of the fonts for printing */
+	h1 { font-size: 28pt !important;  }
+	h2 { font-size: 24pt !important; }
+	h3 { font-size: 22pt !important; }
+	h4 { font-size: 22pt !important; font-variant: small-caps; }
+	h5 { font-size: 21pt !important; }
+	h6 { font-size: 20pt !important; font-style: italic; }
+
+	/* SECTION 5: Make hyperlinks more usable.
+	   Ensure links are underlined, and consider appending
+	   the URL to the end of the link for usability. */
+	a:link,
+	a:visited {
+		color: #000 !important;
+		font-weight: bold;
+		text-decoration: underline;
+	}
+	/*
+	.reveal a:link:after,
+	.reveal a:visited:after {
+		content: " (" attr(href) ") ";
+		color: #222 !important;
+		font-size: 90%;
+	}
+	*/
+
+
+	/* SECTION 6: more reveal.js specific additions by @skypanther */
+	ul, ol, div, p {
+		visibility: visible;
+		position: static;
+		width: auto;
+		height: auto;
+		display: block;
+		overflow: visible;
+		margin: 0;
+		text-align: left !important;
+	}
+	.reveal pre,
+	.reveal table {
+		margin-left: 0;
+		margin-right: 0;
+	}
+	.reveal pre code {
+		padding: 20px;
+		border: 1px solid #ddd;
+	}
+	.reveal blockquote {
+		margin: 20px 0;
+	}
+	.reveal .slides {
+		position: static !important;
+		width: auto !important;
+		height: auto !important;
+
+		left: 0 !important;
+		top: 0 !important;
+		margin-left: 0 !important;
+		margin-top: 0 !important;
+		padding: 0 !important;
+		zoom: 1 !important;
+
+		overflow: visible !important;
+		display: block !important;
+
+		text-align: left !important;
+		-webkit-perspective: none;
+		   -moz-perspective: none;
+		    -ms-perspective: none;
+		        perspective: none;
+
+		-webkit-perspective-origin: 50% 50%;
+		   -moz-perspective-origin: 50% 50%;
+		    -ms-perspective-origin: 50% 50%;
+		        perspective-origin: 50% 50%;
+	}
+	.reveal .slides section {
+		visibility: visible !important;
+		position: static !important;
+		width: auto !important;
+		height: auto !important;
+		display: block !important;
+		overflow: visible !important;
+
+		left: 0 !important;
+		top: 0 !important;
+		margin-left: 0 !important;
+		margin-top: 0 !important;
+		padding: 60px 20px !important;
+		z-index: auto !important;
+
+		opacity: 1 !important;
+
+		page-break-after: always !important;
+
+		-webkit-transform-style: flat !important;
+		   -moz-transform-style: flat !important;
+		    -ms-transform-style: flat !important;
+		        transform-style: flat !important;
+
+		-webkit-transform: none !important;
+		   -moz-transform: none !important;
+		    -ms-transform: none !important;
+		        transform: none !important;
+
+		-webkit-transition: none !important;
+		   -moz-transition: none !important;
+		    -ms-transition: none !important;
+		        transition: none !important;
+	}
+	.reveal .slides section.stack {
+		padding: 0 !important;
+	}
+	.reveal section:last-of-type {
+		page-break-after: avoid !important;
+	}
+	.reveal section .fragment {
+		opacity: 1 !important;
+		visibility: visible !important;
+
+		-webkit-transform: none !important;
+		   -moz-transform: none !important;
+		    -ms-transform: none !important;
+		        transform: none !important;
+	}
+	.reveal section img {
+		display: block;
+		margin: 15px 0px;
+		background: rgba(255,255,255,1);
+		border: 1px solid #666;
+		box-shadow: none;
+	}
+
+	.reveal section small {
+		font-size: 0.8em;
+	}
+
+}  
+</script>
+
+
+<script id="pdf-css" type="application/dynamic-css">
+    
+/**
+ * This stylesheet is used to print reveal.js
+ * presentations to PDF.
+ *
+ * https://github.com/hakimel/reveal.js#pdf-export
+ */
+
+* {
+	-webkit-print-color-adjust: exact;
+}
+
+body {
+	margin: 0 auto !important;
+	border: 0;
+	padding: 0;
+	float: none !important;
+	overflow: visible;
+}
+
+html {
+	width: 100%;
+	height: 100%;
+	overflow: visible;
+}
+
+/* Remove any elements not needed in print. */
+.nestedarrow,
+.reveal .controls,
+.reveal .progress,
+.reveal .playback,
+.reveal.overview,
+.fork-reveal,
+.share-reveal,
+.state-background {
+	display: none !important;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	text-shadow: 0 0 0 #000 !important;
+}
+
+.reveal pre code {
+	overflow: hidden !important;
+	font-family: Courier, 'Courier New', monospace !important;
+}
+
+ul, ol, div, p {
+	visibility: visible;
+	position: static;
+	width: auto;
+	height: auto;
+	display: block;
+	overflow: visible;
+	margin: auto;
+}
+.reveal {
+	width: auto !important;
+	height: auto !important;
+	overflow: hidden !important;
+}
+.reveal .slides {
+	position: static;
+	width: 100%;
+	height: auto;
+
+	left: auto;
+	top: auto;
+	margin: 0 !important;
+	padding: 0 !important;
+
+	overflow: visible;
+	display: block;
+
+	-webkit-perspective: none;
+	   -moz-perspective: none;
+	    -ms-perspective: none;
+	        perspective: none;
+
+	-webkit-perspective-origin: 50% 50%; /* there isn't a none/auto value but 50-50 is the default */
+	   -moz-perspective-origin: 50% 50%;
+	    -ms-perspective-origin: 50% 50%;
+	        perspective-origin: 50% 50%;
+}
+
+.reveal .slides section {
+	page-break-after: always !important;
+
+	visibility: visible !important;
+	position: relative !important;
+	display: block !important;
+	position: relative !important;
+
+	margin: 0 !important;
+	padding: 0 !important;
+	box-sizing: border-box !important;
+	min-height: 1px;
+
+	opacity: 1 !important;
+
+	-webkit-transform-style: flat !important;
+	   -moz-transform-style: flat !important;
+	    -ms-transform-style: flat !important;
+	        transform-style: flat !important;
+
+	-webkit-transform: none !important;
+	   -moz-transform: none !important;
+	    -ms-transform: none !important;
+	        transform: none !important;
+}
+
+.reveal section.stack {
+	margin: 0 !important;
+	padding: 0 !important;
+	page-break-after: avoid !important;
+	height: auto !important;
+	min-height: auto !important;
+}
+
+.reveal img {
+	box-shadow: none;
+}
+
+.reveal .roll {
+	overflow: visible;
+	line-height: 1em;
+}
+
+/* Slide backgrounds are placed inside of their slide when exporting to PDF */
+.reveal section .slide-background {
+	display: block !important;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	z-index: -1;
+}
+
+/* All elements should be above the slide-background */
+.reveal section>* {
+	position: relative;
+	z-index: 1;
+}
+
+/* Display slide speaker notes when 'showNotes' is enabled */
+.reveal .speaker-notes-pdf {
+	display: block;
+	width: 100%;
+	max-height: none;
+	left: auto;
+	top: auto;
+	z-index: 100;
+}
+
+/* Display slide numbers when 'slideNumber' is enabled */
+.reveal .slide-number-pdf {
+	display: block;
+	position: absolute;
+	font-size: 14px;
+}
+
+</script>
+
+
+<script>
+var style = document.createElement( 'style' );
+style.type = 'text/css';
+var style_script_id = window.location.search.match( /print-pdf/gi ) ? 'pdf-css' : 'paper-css';
+var style_script = document.getElementById(style_script_id).text;
+style.innerHTML = style_script;
+document.getElementsByTagName('head')[0].appendChild(style);
+</script>
+
+    <script src="Hoegh_AppMath_Seminar_files/header-attrs-2.10/header-attrs.js"></script>
+    <link href="Hoegh_AppMath_Seminar_files/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
+    <link href="Hoegh_AppMath_Seminar_files/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section>
+    <h1 class="title"><div class="line-block">Statistical Methods<br />
+for Predicting Zoonotic Spillover</div></h1>
+    <h2 class="author">Andy Hoegh</h2>
+</section>
+
+<section id="my-research-philosophy" class="slide level2">
+<h2>My Research Philosophy</h2>
+<p>“The best thing about being a statistician is that you get to play in everyone’s backyard.” - John Tukey<br />
+</p>
+<p><img src="lavalake.jpg" width="2000px" /></p>
+</section>
+<section id="statistical-collaboration-research" class="slide level2">
+<h2>Statistical Collaboration &amp; Research</h2>
+<p>Statistical research emerges from the interface of complex datasets and collaborations with scientists</p>
+</section>
+<section id="statistical-collaboration" class="slide level2">
+<h2>Statistical Collaboration</h2>
+<ul>
+<li>Raina Plowright and Bat One Health Team, MSU</li>
+</ul>
+<p><img src="batone1.png" width="2000px" /></p>
+</section>
+<section id="statistical-collaboration-1" class="slide level2">
+<h2>Statistical Collaboration</h2>
+<p><img src="batone2.png" width="2000px" /></p>
+</section>
+<section id="statistical-collaboration-2" class="slide level2">
+<h2>Statistical Collaboration</h2>
+<p><img src="batone3.png" width="2000px" /></p>
+</section>
+<section id="talk-overview" class="slide level2">
+<h2>Talk Overview:</h2>
+<ol type="1">
+<li>Network models for predicting Hendra Virus spillover</li>
+</ol>
+<p><img src="Hendra.png" width="2000px" /></p>
+</section>
+<section id="talk-overview-1" class="slide level2">
+<h2>Talk Overview:</h2>
+<ol start="2" type="1">
+<li>Land Use Induced Spillover and Eco Countermeasures</li>
+</ol>
+<p><img src="robin.jpg" width="800px" /></p>
+</section>
+<section id="talk-overview-2" class="slide level2">
+<h2>Talk Overview:</h2>
+<ol start="3" type="1">
+<li>Data integration for pooled sampling and estimation of CoV prevalence</li>
+</ol>
+<p><img src="GP.png" width="2000px" /></p>
+</section>
+<section>
+<section id="part-1-network-models-for-predicting-hendra-virus-spillover" class="title-slide slide level1">
+<h1>Part 1: Network models for predicting Hendra Virus spillover</h1>
+
+</section>
+<section id="zoonotic-spillover" class="slide level2">
+<h2>Zoonotic Spillover</h2>
+<ul>
+<li class="fragment"><p>Zoonotic spillover is the transmission of pathogens from animals to humans.</p></li>
+<li class="fragment"><p>Viral shedding is when cells hosting the infection release (“shed”) infectious virus particles.</p></li>
+<li class="fragment"><p>DARPA: PREventing EMerging Pathogenic Threats (PREEMPT) program focused on Henipaviruses: (PREEMPT D18AC000031)</p></li>
+</ul>
+</section>
+<section id="zoonotic-spillover-nipah" class="slide level2">
+<h2>Zoonotic Spillover: Nipah</h2>
+<p><img src="Nipah.png" width="800px" /></p>
+</section>
+<section id="zoonotic-spillover-hendra" class="slide level2">
+<h2>Zoonotic Spillover: Hendra</h2>
+<p><img src="Hendra_news.png" width="800px" /></p>
+</section>
+<section id="zoonotic-spillover-hendra-1" class="slide level2">
+<h2>Zoonotic Spillover: Hendra</h2>
+<ul>
+<li class="fragment"><p>Hendra virus primarily infects fruit bats (flying foxes)</p></li>
+<li class="fragment"><p>Hendra virus can spillover from bats to horses and from horses to humans</p></li>
+<li class="fragment"><p>Hendra virus has extremely high mortality rate &gt; 57 %</p></li>
+</ul>
+</section>
+<section id="research-questions" class="slide level2">
+<h2>Research Questions</h2>
+<ul>
+<li class="fragment"><p>Understand impact of land use characteristics and spatiotemporal dynamics on the risk of zoonotic spillovers of Hendra virus</p></li>
+<li class="fragment"><p>Suggest possible “eco-countermeasures” for Hendra spillover</p></li>
+</ul>
+</section>
+<section id="elevated-oni---food-shortages---spillovers" class="slide level2">
+<h2>Elevated ONI -&gt; Food Shortages -&gt; Spillovers</h2>
+<p><img src="Hendra.png" width="850px" /></p>
+</section>
+<section id="winter-flowering-stops-spillovers" class="slide level2">
+<h2>Winter Flowering stops spillovers</h2>
+<p><img src="flowering.png" width="700px" /></p>
+</section>
+<section id="hendra-virus-land-use-characteristics" class="slide level2">
+<h2>Hendra Virus Land Use Characteristics</h2>
+<p><img src="simplex.png" width="550px" /></p>
+</section>
+<section id="networks-overview" class="slide level2">
+<h2>Networks Overview</h2>
+<p><img src="onetwothree.png" width="1200px" /></p>
+</section>
+<section id="network-overview" class="slide level2">
+<h2>Network Overview</h2>
+<div style="float: left; width: 50%;">
+<ul>
+<li class="fragment"><p>Nodes: variables</p></li>
+<li class="fragment"><p>Arrows: edges, connections between variables</p></li>
+<li class="fragment"><p>Networks: factorization of joint distribution of all parameters</p></li>
+</ul>
+</div>
+<div style="float: left; width: 10%;">
+
+</div>
+<div style="float: right; width: 40%;">
+<p><img data-src="onetwothree.png" /></p>
+</div>
+</section>
+<section id="conditional-distributions" class="slide level2">
+<h2>Conditional Distributions</h2>
+<div style="float: left; width: 50%;">
+<p><span class="math display">\[\begin{align}
+f(ONI, Short, Spill) =&amp;\\
+f(ONI) \times&amp;\\
+f(Short|ONI) \times&amp;\\
+f(Spill|Short)
+\end{align}\]</span></p>
+</div>
+<div style="float: left; width: 10%;">
+
+</div>
+<div style="float: right; width: 40%;">
+<p><img data-src="onetwothree.png" /></p>
+</div>
+</section>
+<section id="model-fitting-binary" class="slide level2">
+<h2>Model Fitting: Binary</h2>
+<ul>
+<li>Binary responses are fit using a Bernoulli distribution.</li>
+</ul>
+<p><span class="math display">\[\begin{align}
+y_{ij}&amp; \sim Bernoulli(\theta_i)\\
+\theta_i &amp; \sim Beta( \omega (\kappa - 2) + 1, (1 - \omega)(\kappa - 2) + 1)\\
+\omega &amp; \sim Beta(a_\omega, b_\omega)\\
+\kappa &amp; \sim Gamma(a_\kappa, b_\kappa)
+\end{align}\]</span></p>
+</section>
+<section id="model-fitting-categorical" class="slide level2">
+<h2>Model Fitting: Categorical</h2>
+<ul>
+<li>Categorical responses are fit using a Multinomial distribution</li>
+</ul>
+<p><span class="math display">\[\begin{align}
+\underline{y}_{ij} &amp; \sim multinomial(\underline{\theta}_i)\\
+\underline{\theta}_i &amp; \sim Dirichlet(\kappa \times  \underline{\phi})\\
+\underline{\phi} &amp;\sim Dirichlet(k \times \underline{p})\\
+\kappa &amp; \sim gamma(a,b)
+\end{align}\]</span></p>
+</section>
+<section id="predictive-validation" class="slide level2">
+<h2>Predictive Validation</h2>
+<div style="float: left; width: 50%;">
+<ul>
+<li class="fragment"><p>Posterior predictive distribution: <span class="math inline">\(p(y^{*}|y) = \int p(y^{*}|\theta) p(\theta|y) d \theta\)</span></p></li>
+<li class="fragment"><p>log pointwise predictive density (LPD): <span class="math inline">\(\sum_{i=1}^n \log p(y_i^{*}|y)\)</span></p></li>
+<li class="fragment"><p>Expected LPD is evaluated with leave one out cross validation (LOOCV)</p></li>
+</ul>
+</div>
+<div style="float: left; width: 10%;">
+
+</div>
+<div style="float: right; width: 40%;">
+<p><img data-src="ELPD.png" /></p>
+</div>
+</section>
+<section id="final-network" class="slide level2">
+<h2>Final Network</h2>
+<p><img data-src="Network.png" /></p>
+</section>
+<section id="spillover-risk" class="slide level2">
+<h2>Spillover Risk</h2>
+<p><img src="probs.png" width="5000px" /></p>
+</section>
+<section id="eco-countermeasures" class="slide level2">
+<h2>Eco-Countermeasures</h2>
+</section></section>
+<section>
+<section id="part-2-animal-movement-models-for-eco-countermeasures" class="title-slide slide level1">
+<h1>Part 2: Animal Movement Models for Eco-Countermeasures</h1>
+
+</section>
+<section id="section" class="slide level2" data-background-video="bats2019.mp4">
+<h2 data-background-video="bats2019.mp4"></h2>
+</section>
+<section id="section-1" class="slide level2" data-background-video="bats2020b.mp4">
+<h2 data-background-video="bats2020b.mp4"></h2>
+</section>
+<section id="section-2" class="slide level2" data-background-video="bats2020.mp4">
+<h2 data-background-video="bats2020.mp4"></h2>
+</section>
+<section id="research-questions-1" class="slide level2">
+<h2>Research Questions</h2>
+<ul>
+<li class="fragment"><p>Identify and understand if behavioral and movement patterns differ as a function of food availability</p></li>
+<li class="fragment"><p>Evaluate impact of potential eco-countermeasures (replanting trees)</p></li>
+<li class="fragment"><p>Productive winter flowering comes eucalyptus trees, so ongoing cooperation with Koala reforestation programs can help here too</p></li>
+</ul>
+</section>
+<section id="agent-based-models-for-animal-movement" class="slide level2">
+<h2>Agent Based Models for Animal Movement</h2>
+<ul>
+<li class="fragment"><p>Agent based models are a simulation based approach using a set of <em>agents</em>.</p></li>
+<li class="fragment"><p>Each agent is given a relatively simple set of rules, which control interactions between agents.</p></li>
+<li class="fragment"><p>The collective behavior of agents can model complex population level characteristics.</p></li>
+</ul>
+</section>
+<section id="agent-properties" class="slide level2">
+<h2>Agent Properties</h2>
+<p>The agents have a set of characteristics:</p>
+<ul>
+<li class="fragment">step length</li>
+<li class="fragment">angular heading</li>
+<li class="fragment">home range affinity</li>
+<li class="fragment">interaction with other agents</li>
+</ul>
+<p>Furthermore the characteristics will vary:</p>
+<ul>
+<li class="fragment">based on a Markov switching model as a function of food availability</li>
+</ul>
+</section>
+<section id="step-length-and-angular-direction" class="slide level2">
+<h2>Step Length and Angular Direction</h2>
+<p><img src="turn_angle.png" width="900px" /></p>
+</section>
+<section id="data-model" class="slide level2">
+<h2>Data Model</h2>
+<p><span class="math display">\[\underline{z}_{t} = H_t \underline{s}_{t} + \underline{\epsilon}_t, \; \; \;\;\;\; \underline{\epsilon}_t \sim N(0,\sigma^2_{\epsilon} I)\]</span> where <span class="math inline">\(\underline{z}_t\)</span> is a matrix of the observed locations for the agents at time t, <span class="math inline">\(H_t\)</span> is an incidence matrix to determine whether an agent is observed at time t, <span class="math inline">\(\underline{s}_t\)</span> is the latent location at time, and <span class="math inline">\(\epsilon_t\)</span> is the error process</p>
+</section>
+<section id="process-model" class="slide level2">
+<h2>Process Model</h2>
+<p><span class="math display">\[\underline{s}_{i,t} = \underline{s}_{i,t-1} + u_{i,t}\underline{\delta}_{i,t} + \underline{\eta}_{i,t}\]</span></p>
+<ul>
+<li><span class="math inline">\(u_{i,t}\)</span> represents the speed</li>
+<li><span class="math inline">\(\underline{\delta}_{i,t}\)</span> is a unit vector for the directional component of the velocity</li>
+</ul>
+<h4 id="angular-heading">Angular Heading</h4>
+<p><span class="math display">\[\left(\delta_{x,i,t}, \delta_{y,i,t}\right)&#39; = \left( \cos(\theta_{i,t}), \sin(\theta_{i,t}) \right)\]</span> <span class="math display">\[\theta_{i,t}  \sim ProjNormal(\mu, \kappa)\]</span> &gt;- <span class="math inline">\(\mu\)</span> is an angular heading and <span class="math inline">\(\kappa\)</span> is a concentration parameter</p>
+<h4 id="speed">Speed</h4>
+<p><span class="math display">\[u_{i,t} = LN(\mu_u, \sigma^2_u)\]</span></p>
+</section>
+<section id="nsf-rules-of-life-grant" class="slide level2">
+<h2>NSF Rules of Life Grant</h2>
+<p><img src="robin.jpg" width="800px" /></p>
+</section>
+<section id="integrating-telemetric-data-with-radar" class="slide level2">
+<h2>Integrating Telemetric Data with Radar</h2>
+<p><img src="robin-data.png" width="900px" /></p>
+</section></section>
+<section>
+<section id="part-3-dynamics-of-coronavirus-infection-in-bats" class="title-slide slide level1">
+<h1>Part 3: Dynamics of Coronavirus Infection in Bats</h1>
+
+</section>
+<section id="dynamics-of-coronavirus-infection-in-bats" class="slide level2">
+<h2>Dynamics of Coronavirus Infection in Bats</h2>
+<div style="float: left; width: 60%;">
+<ul>
+<li class="fragment"><p>In March 2020, DARPA shifted attention from henipaviruses to coronaviruses</p></li>
+<li class="fragment"><p>We proposed investigating spatiotemporal dynamics of CoV shedding in bats.</p></li>
+</ul>
+</div>
+<div style="float: left; width: 10%;">
+
+</div>
+<div style="float: right; width: 30%;">
+<p><img src="Cov-tree.png" width="150px" /></p>
+</div>
+</section>
+<section id="research-questions-2" class="slide level2">
+<h2>Research Questions</h2>
+<ul>
+<li class="fragment"><p>Can we establish a baseline understanding of spatiotemporal dynamics of CoV shedding in bats?</p></li>
+<li class="fragment"><p>Can we use pooled testing, without follow up, be used to obtain more precise prevalence estimates?</p></li>
+<li class="fragment"><p>Can an adaptive pooling approach result in efficient pool size?</p></li>
+<li class="fragment"><p>Can spatiotemporal dynamics of Cov prevalence be inferred from pooled testing?</p></li>
+</ul>
+</section>
+<section id="pooled-testing" class="slide level2">
+<h2>Pooled Testing</h2>
+<p><img src="pool1.png" width="800px" /></p>
+</section>
+<section id="pool-structure" class="slide level2">
+<h2>Pool Structure?</h2>
+<p><img src="pool2.png" width="800px" /></p>
+</section>
+<section id="pooled-prevance" class="slide level2">
+<h2>Pooled Prevance</h2>
+<p><img src="Pool_prev.png" width="800px" /></p>
+</section>
+<section id="optimal-pooling" class="slide level2">
+<h2>Optimal Pooling</h2>
+<p><span class="math inline">\(\pi = 1 - (1-p)^k\)</span></p>
+<ul>
+<li class="fragment"><p>where <span class="math inline">\(\pi\)</span> is the probability of a pool of size k testing positive</p></li>
+<li class="fragment"><p><span class="math inline">\(p\)</span> is the prevalence in the population</p></li>
+<li class="fragment"><p>optimal pool size depends on unknown <span class="math inline">\(p\)</span></p></li>
+</ul>
+</section>
+<section id="adaptive-pooling" class="slide level2">
+<h2>Adaptive Pooling</h2>
+<ul>
+<li class="fragment"><p>Using a pooled sampling framework we can estimate population prevalence (with uncertainty)</p></li>
+<li class="fragment"><p>That prevalence can be used to update pool size and re-estimate prevalence…</p></li>
+</ul>
+</section>
+<section id="gaussian-process" class="slide level2">
+<h2>Gaussian Process</h2>
+<div style="float: left; width: 60%;">
+<p><img src="GP_connect.png" width="750px" /></p>
+</div>
+<div style="float: left; width: 10%;">
+
+</div>
+<div style="float: right; width: 30%;">
+<p>Prevalence changes over time</p>
+<ul>
+<li class="fragment">A Gaussian process can “connect the dots”</li>
+</ul>
+</div>
+</section>
+<section id="gaussian-process-1" class="slide level2">
+<h2>Gaussian Process</h2>
+<p><img src="GP.png" width="2000px" /></p>
+</section>
+<section id="next-steps" class="slide level2">
+<h2>Next Steps</h2>
+<ul>
+<li class="fragment"><p>Incorporating “spatial” information from several different roosts</p></li>
+<li class="fragment"><p>Integrating individual bat data from captured bats to understand potential differences in shedding across demographic &amp; immunological characteristics</p></li>
+<li class="fragment"><p>Relating (elevated) prevalence to other factors</p></li>
+</ul>
+</section></section>
+<section id="questions" class="title-slide slide level1">
+<h1>Questions</h1>
+
+</section>
+
+<section>
+<section id="extra-stuff" class="title-slide slide level1">
+<h1>Extra Stuff</h1>
+
+</section>
+<section id="model-fitting" class="slide level2">
+<h2>Model Fitting</h2>
+<ul>
+<li class="fragment"><p>Despite the <em>Bayesian</em> network moniker, networks do not necessarily indicate <em>Bayesian</em> inference.</p></li>
+<li class="fragment"><p>The term <em>Bayesian</em> here refers to conditional probabilities</p></li>
+<li class="fragment"><p>The model framework includes hierarchical components to account for multiscale nature of the data.</p></li>
+</ul>
+</section>
+<section id="model-fitting-count" class="slide level2">
+<h2>Model Fitting: Count</h2>
+<ul>
+<li>Count responses are fit using a negative binomial distribution</li>
+</ul>
+<p><span class="math display">\[\begin{align}
+y_{i} &amp; \sim neg binomial(\mu, \phi)\\
+\mu &amp; \sim gamma(a, b)\\
+\phi &amp; \sim gamma (a_\phi, b_\phi)\\
+\end{align}\]</span></p>
+</section></section>
+    </div>
+  </div>
+
+  <script src="Hoegh_AppMath_Seminar_files/reveal.js-3.3.0.1/lib/js/head.min.js"></script>
+  <script src="Hoegh_AppMath_Seminar_files/reveal.js-3.3.0.1/js/reveal.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        // Display controls in the bottom right corner
+        controls: true,
+        // Display a presentation progress bar
+        progress: true,
+        // Display the page number of the current slide
+        slideNumber: false,
+        // Push each slide change to the browser history
+        history: true,
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+        // Enable the slide overview mode
+        overview: true,
+        // Vertical centering of slides
+        center: true,
+        // Enables touch navigation on devices with touch input
+        touch: true,
+        // Loop the presentation
+        loop: false,
+        // Change the presentation direction to be RTL
+        rtl: false,
+        // Turns fragments on and off globally
+        fragments: true,
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+        // Transition style
+        transition: 'none', // none/fade/slide/convex/concave/zoom
+        // Transition speed
+        transitionSpeed: 'default', // default/fast/slow
+        // Transition style for full page slide backgrounds
+        backgroundTransition: 'default', // none/fade/slide/convex/concave/zoom
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+
+
+        chalkboard: {
+          toggleNotesButton: true,
+          theme: 'whiteboard',
+        },
+
+        keyboard: {
+          67: function() { RevealChalkboard.toggleNotesCanvas() },    // toggle notes canvas when 'c' is pressed
+          66: function() { RevealChalkboard.toggleChalkboard() }, // toggle chalkboard when 'b' is pressed
+          46: function() { RevealChalkboard.clear() },    // clear chalkboard when 'DEL' is pressed
+           8: function() { RevealChalkboard.reset() },    // reset chalkboard data on current slide when 'BACKSPACE' is pressed
+          68: function() { RevealChalkboard.download() }, // downlad recorded chalkboard drawing when 'd' is pressed
+        },
+
+        // Optional reveal.js plugins
+        dependencies: [
+          { src: 'Hoegh_AppMath_Seminar_files/reveal.js-3.3.0.1/plugin/chalkboard/chalkboard.js', async: true },
+        ]
+      });
+    </script>
+  <!-- dynamically load mathjax for compatibility with self-contained -->
+  <script>
+    (function () {
+      var script = document.createElement("script");
+      script.type = "text/javascript";
+      script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+      document.getElementsByTagName("head")[0].appendChild(script);
+    })();
+  </script>
+
+<script>
+  (function() {
+    if (window.jQuery) {
+      Reveal.addEventListener( 'slidechanged', function(event) {  
+        window.jQuery(event.previousSlide).trigger('hidden');
+        window.jQuery(event.currentSlide).trigger('shown');
+      });
+    }
+  })();
+</script>
+
+
+  </body>
+</html>
