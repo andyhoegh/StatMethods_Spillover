@@ -1,0 +1,42 @@
+---
+title:  |
+  | Statistical Methods  
+  | for Predicting Zoonotic Spillover  
+author: "Andy Hoegh"
+output:
+  revealjs::revealjs_presentation:
+    self_contained: false
+    theme: simple
+    center: true
+    transition: none
+    autoSlide: true
+    incremental: true
+    showNotes: true
+    reveal_plugins: ["chalkboard"]
+    reveal_options:
+      chalkboard:
+        theme: whiteboard
+        toggleNotesButton: true
+---
+
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+knitr::opts_chunk$set(message = FALSE)
+library(knitr)
+library(ggplot2)
+library(dplyr)
+library(mnormt)
+library(circular)
+```
+
+
+## My Research Philosophy
+
+"The best thing about being a statistician is that you get to play in everyone's backyard." - John Tukey
+\
+
+```{r, out.width = "2000px"}
+knitr::include_graphics("lavalake.jpg")
+```
